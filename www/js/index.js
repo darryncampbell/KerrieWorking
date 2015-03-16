@@ -215,6 +215,8 @@ function pageLoad()
 	setSpinning();
 	if (g_guid == "")
 		g_guid = getGuid();
+	else
+		refreshData();
 }
 
 function refreshData()
