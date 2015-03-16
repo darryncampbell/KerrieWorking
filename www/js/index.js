@@ -39,12 +39,12 @@ function ajaxRequest(guid, url, method, parameters, async, functionToCall, parse
 			  parser=new DOMParser();
 			  xmlDoc=parser.parseFromString(response,"text/html");
 			  }
-			else // code for IE
-			  {
-			  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-			  xmlDoc.async=false;
-			  xmlDoc.loadXML(response); 
-			  } 
+//			else // code for IE
+//			  {
+//			  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+//			  xmlDoc.async=false;
+//			  xmlDoc.loadXML(response); 
+//			  } 
 			  var guidNode = xmlDoc.getElementById('OnlineBookingGuid');
 			  console.log(guidNode.value);
 			  if (guidNode != null){
@@ -146,12 +146,12 @@ if (window.DOMParser)
   parser=new DOMParser();
   xmlDoc=parser.parseFromString(response,"text/html");
   }
-else // code for IE
-  {
-  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async=false;
-  xmlDoc.loadXML(response); 
-  } 
+//else // code for IE
+//  {
+//  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+//  xmlDoc.async=false;
+//  xmlDoc.loadXML(response); 
+//  } 
   
   if (response.indexOf("Session timeout") > -1)
   {
@@ -213,6 +213,9 @@ else // code for IE
 function pageLoad()
 {
 	setSpinning();
+	var phoneModel = device.model;
+	console.log("Phone Model: " + phoneModel);
+	document.getElementById("day0Heading").innerHTML = phoneModel;
 	if (g_guid == "")
 		g_guid = getGuid();
 	else
