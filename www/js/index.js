@@ -19,8 +19,8 @@
  
  
 	
-	var kerrieId = 9747;
-var thirtyMinuteTreatmentId = 49446;
+var kerrieId = 9747;
+var thirtyMinuteTreatmentId = 31148;
 var g_guid = "";
 
 function ajaxRequest(guid, url, method, parameters, async, functionToCall, parseDaysAhead)
