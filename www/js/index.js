@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- 
- 
-	
+
+
+
 var kerrieId = 9747;
 var thirtyMinuteTreatmentId = 31148;
 var g_guid = "";
@@ -43,12 +43,12 @@ function ajaxRequest(guid, url, method, parameters, async, functionToCall, parse
 //			  {
 //			  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
 //			  xmlDoc.async=false;
-//			  xmlDoc.loadXML(response); 
-//			  } 
+//			  xmlDoc.loadXML(response);
+//			  }
 			  var guidNode = xmlDoc.getElementById('OnlineBookingGuid');
 			  console.log(guidNode.value);
 			  if (guidNode != null){
-				g_guid = guidNode.value;			
+				g_guid = guidNode.value;
 				guid = g_guid;
 			}
 			}
@@ -150,12 +150,12 @@ if (window.DOMParser)
 //  {
 //  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
 //  xmlDoc.async=false;
-//  xmlDoc.loadXML(response); 
-//  } 
-  
+//  xmlDoc.loadXML(response);
+//  }
+
   if (response.indexOf("Session timeout") > -1)
   {
-	//  Session has timed out, re-establish it: 
+	//  Session has timed out, re-establish it:
 	g_guid = "";
 	pageLoad();
   }
@@ -165,7 +165,7 @@ if (window.DOMParser)
 	getNextSevenDaysBookings(g_guid);
 
 	console.log(response);
-	
+
 	// Write the date heading
 	var dayHeading = xmlDoc.getElementsByTagName("h3");
 	var dayHeadingAsString = dayHeading[0].innerHTML;
@@ -175,9 +175,9 @@ if (window.DOMParser)
 	{
 		dayHeadingAsString = dayHeadingAsString.substring("Times available on ".length, dayHeadingAsString.length);
 	}
-		
+
 	document.getElementById("day" + parseDaysAhead + "Heading").innerHTML = "<H2>" + dayHeadingAsString + " slots free:</H2>";
-	
+
 	//  Write the available times
   var freeTimes = customerNode = xmlDoc.getElementsByTagName ("label").length;
   var timeList;
@@ -189,8 +189,9 @@ if (window.DOMParser)
   {
 	  var customerNode = xmlDoc.getElementsByTagName ("label")[i];
 	  var nodeText = customerNode.innerHTML;
-	  var n = nodeText.lastIndexOf(">");
-	  var time = nodeText.substring(n+2, nodeText.length);
+    console.log("DCC DEBUG: " + nodeText);
+	  var n = nodeText.indexOf("<");
+    var time = nodeText.substring(0, n);
 	//  alert(customerNode.innerHTML);
 		time = time.replace(/\r?\n|\r/g,"").trim();
 		time = "<LI class='list-group-item'>" + time + "</LI>";
@@ -206,7 +207,7 @@ if (window.DOMParser)
 		timeList += "</UL>";
 	document.getElementById("day" + parseDaysAhead + "Content").innerHTML = timeList;
 	stopSpinning();
-	
+
 }
 }
 
@@ -235,9 +236,9 @@ function refreshData()
 	{
 		pageLoad();
 	}
-	
+
 }
- 
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -269,12 +270,12 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 };
 
 app.initialize();
